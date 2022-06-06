@@ -10,7 +10,7 @@ import { Product } from '../../components';
 import { AppContext, CartProduct } from '../../context/StateContext';
 import { client, urlFor } from '../../lib/client';
 import getStripe from '../../lib/getStripe';
-import { IProduct } from '../../sanity_ecommerce/schema';
+import { IProduct } from '../../types';
 
 type Props = {
   product: IProduct;
