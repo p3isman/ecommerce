@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useContext, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import toast from 'react-hot-toast';
 import {
   AiOutlineDelete,
@@ -15,7 +15,7 @@ import { urlFor } from '../lib/client';
 import getStripe from '../lib/getStripe';
 
 const Cart = () => {
-  const cartRef = useRef(null);
+  const cartRef = useRef<HTMLDivElement>(null);
   const {
     totalItemsAmount,
     totalPrice,
@@ -24,6 +24,23 @@ const Cart = () => {
     changeItemQuantity,
     onDelete
   } = useContext(AppContext);
+
+  useEffect(() => {
+    /**
+     * Alert if clicked on outside of element
+     */
+    function handleClickOutside(event: MouseEvent) {
+      if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
+        setShowCart(false);
+      }
+    }
+    // Bind the event listener
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [cartRef, setShowCart]);
 
   const handleCheckout = async () => {
     // Load stripe client
@@ -50,8 +67,8 @@ const Cart = () => {
   };
 
   return (
-    <div className='cart-wrapper' ref={cartRef}>
-      <div className='cart-container'>
+    <div className='cart-wrapper'>
+      <div className='cart-container' ref={cartRef}>
         <button
           type='button'
           className='cart-heading'
