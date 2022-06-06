@@ -14,8 +14,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "removeComments": true,
-    "typeRoots": ["./node_modules/@sanity/base/types"]
+    "removeComments": true
   },
   "include": [
     "next-env.d.ts",

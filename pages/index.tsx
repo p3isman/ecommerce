@@ -1,7 +1,7 @@
 import type { GetStaticProps, NextPage } from 'next';
 import { FooterBanner, HeroBanner, Product } from '../components/index';
 import { client } from '../lib/client';
-import { IBanner, IProduct } from '../sanity_ecommerce/schema';
+import { IBanner, IProduct } from '../types';
 
 type Props = {
   products: IProduct[];

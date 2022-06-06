@@ -1,6 +1,6 @@
 import { createContext, Dispatch, SetStateAction, useState } from 'react';
 import toast from 'react-hot-toast';
-import { IProduct } from '../sanity_ecommerce/schema';
+import { IProduct } from '../types';
 
 interface AppContext {
   showCart: boolean;
