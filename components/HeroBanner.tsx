@@ -3,7 +3,7 @@ import { useNextSanityImage } from 'next-sanity-image';
 import Image from 'next/image';
 import Link from 'next/link';
 import { client } from '../lib/client';
-import { IBanner } from '../sanity_ecommerce/schema';
+import { IBanner } from '../types';
 
 type Props = {
   heroBanner: IBanner;
