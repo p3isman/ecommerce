@@ -2,7 +2,7 @@ import { useNextSanityImage } from 'next-sanity-image';
 import Image from 'next/image';
 import Link from 'next/link';
 import { client } from '../lib/client';
-import { IProduct } from '../sanity_ecommerce/schema';
+import { IProduct } from '../types';
 
 type Props = {
   product: IProduct;
