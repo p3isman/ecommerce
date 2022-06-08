@@ -906,6 +906,10 @@ span.text-red {
     margin-bottom: 5px;
   }
 
+  .marquee .product-image {
+    width: 100px;
+  }
+
   .product .cart-product-image {
     width: 25%;
     height: 25%;
@@ -956,7 +960,6 @@ span.text-red {
 
   .track {
     animation: marquee 30s linear infinite;
-    width: 550%;
   }
 
   .success-wrapper,
