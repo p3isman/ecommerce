@@ -76,8 +76,9 @@ span.text-red {
 }
 
 .logo {
-  color: gray;
+  color: rgb(87, 87, 87);
   font-size: 18px;
+  text-transform: uppercase;
 }
 
 .cart-icon {
@@ -128,10 +129,10 @@ span.text-red {
 }
 
 .product-image {
+  width: 250px;
+  height: 250px;
   border-radius: 15px;
   background-color: #ebebeb;
-  transform: scale(1, 1);
-  transition: transform 0.5s ease;
 }
 
 .product-name {
@@ -177,10 +178,9 @@ span.text-red {
 }
 
 .hero-banner-container h1 {
-  position: relative;
   color: white;
+  margin-left: -10px;
   font-size: 10em;
-  margin-left: -20px;
   text-transform: uppercase;
   z-index: 1;
 }
@@ -188,7 +188,7 @@ span.text-red {
 .hero-banner-image {
   position: absolute;
   top: 0%;
-  right: 20%;
+  right: 10%;
   width: 450px;
   height: 450px;
 }
@@ -225,6 +225,7 @@ span.text-red {
 }
 
 .products-heading h2 {
+  margin-bottom: 1rem;
   font-size: 40px;
   font-weight: 800;
 }
@@ -263,27 +264,28 @@ span.text-red {
   cursor: pointer;
 }
 
-.banner-desc .left h3 {
-  position: relative;
-  font-weight: 900;
-  font-size: 80px;
-  margin-left: 25px;
-  z-index: 1;
+.banner-desc .left {
+  width: 50%;
+  margin-right: 8rem;
 }
 
-.banner-desc .left p {
-  margin: 18px;
+.banner-desc .left h3 {
+  width: 80%;
+  font-weight: 900;
+  font-size: 80px;
+  margin: 18px 15px 18px 0;
+  z-index: 1;
 }
 
 .footer-banner-image {
   position: absolute;
-  width: 30%;
-  top: -20%;
-  left: 30%;
+  width: 300px;
+  bottom: 40%;
+  left: 35%;
 }
 
 .banner-desc .right {
-  position: relative;
+  margin-right: 5rem;
   line-height: 1.4;
   z-index: 1;
 }
@@ -731,63 +733,120 @@ span.text-red {
   font-size: 12px;
 }
 
-@media screen and (max-width: 800px) {
-  .hero-banner-container {
-    height: 560px;
-  }
-
+@media screen and (max-width: 1024px) {
   .hero-banner-image {
-    width: 77%;
-    height: 62%;
-    top: -2%;
-    right: -6%;
-  }
-
-  .footer-banner-container {
-    height: 560px;
-    margin-top: 80px;
+    margin-top: 2rem;
+    width: 400px;
+    height: 400px;
+    right: 0;
   }
 
   .footer-banner-image {
-    width: 77%;
+    top: -15%;
     left: 30%;
-    top: 6%;
-    height: 56%;
+    width: 250px;
+    height: 250px;
+  }
+
+  .banner-desc {
+    justify-content: space-evenly;
+    gap: 5rem;
+
+  }
+
+  .banner-desc .left {
+    margin-right: 1rem;
+  }
+
+  .banner-desc .left h3 {
+    font-size: 60px;
+  }
+
+  .banner-desc .right {
+    margin-right: 0;
+  }
+
+  .banner-desc .right h3 {
+    font-size: 40px;
+  }
+
+  .banner-desc .right button {
+    margin-top: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .layout {
+    padding: 0;
+  }
+
+  .navbar-container {
+    padding: 0.8rem 1.5rem;
+    margin: 0;
+  }
+
+  .logo a {
+    vertical-align: middle;
+  }
+
+  .hero-banner-container {
+    height: 400px;
+    margin: 0;
+  }
+
+  .hero-banner-container .desc p {
+    display: none;
+  }
+
+  .hero-banner-image {
+    top: 20%;
+    width: 50%;
+  }
+
+  .footer-banner-container {
+    height: auto;
+    margin-top: 80px;
+    padding: 6rem 2rem;
+    border-radius: 0;
+  }
+
+  .footer-banner-image {
+    width: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .banner-desc {
+    flex-direction: column;
+    gap: 50px;
   }
 
   .banner-desc .left h3 {
     font-weight: 900;
-    font-size: 50px;
-    margin-left: 5px;
-  }
-
-  .banner-desc .left p {
-    margin: 18px;
+    font-size: 2rem;
   }
 
   .banner-desc .right h3 {
-    font-size: 45px;
+    font-size: 2rem;
   }
 
   .banner-desc .right p {
-    font-size: 18px;
+    font-size: 1rem;
   }
 
   .banner-desc .right .company-desc {
     font-size: 14px;
   }
 
-  .banner-desc {
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
   .hero-banner-container {
     line-height: 1.3;
+    padding: 2rem;
+    border-radius: 0;
   }
 
   .hero-banner-container h1 {
     font-size: 50px;
+    margin-left: 0;
   }
 
   .hero-banner-container h3 {
@@ -813,7 +872,7 @@ span.text-red {
   }
 
   .cart-container {
-    width: 415px;
+    width: 100%;
     padding: 4px;
   }
 
@@ -821,12 +880,30 @@ span.text-red {
     margin-top: 35px;
   }
 
+  .products-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
   .product-container {
     margin-top: 10px;
   }
 
+  .product-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .product {
     padding: 20px 5px;
+  }
+
+  .product-image {
+    width: 90%;
+    height: auto;
+    margin-bottom: 5px;
   }
 
   .product .cart-product-image {
@@ -878,7 +955,7 @@ span.text-red {
   }
 
   .track {
-    animation: marquee 10s linear infinite;
+    animation: marquee 30s linear infinite;
     width: 550%;
   }
 
@@ -895,7 +972,7 @@ span.text-red {
   }
 
   .success {
-    height: 350px;
+    background-color: white;
   }
 
   .success h2 {
