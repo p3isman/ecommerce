@@ -15,13 +15,9 @@ const Product = ({ product: { name, image, slug, price } }: Props) => {
     <div>
       <Link href={`/product/${slug?.current}`}>
         <div className='product-card'>
-          <Image
-            {...imageProps}
-            alt={name}
-            width={250}
-            height={250}
-            className='product-image'
-          />
+          <div className='product-image'>
+            <Image {...imageProps} alt={name} />
+          </div>
           <p className='product-name'>{name}</p>
           <p className='product-price'>${price}</p>
         </div>
