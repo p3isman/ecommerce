@@ -7,6 +7,7 @@ const Footer = () => {
         Copyright &copy; {new Date().getFullYear()} Boat Headphones. All rights
         reserved.
       </p>
+      <p>This website is just for showcase purposes.</p>
       <p className='icons'>
         <AiFillInstagram />
         <AiOutlineTwitter />
