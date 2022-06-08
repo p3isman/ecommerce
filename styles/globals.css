@@ -910,6 +910,10 @@ span.text-red {
     margin-bottom: 5px;
   }
 
+  .marquee {
+    height: 200px;
+  }
+
   .marquee .product-image {
     width: 100px;
   }
