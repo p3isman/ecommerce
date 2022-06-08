@@ -563,21 +563,25 @@ span.text-red {
   gap: 30px;
 }
 
+.buttons * {
+  border-radius: 20px;
+}
+
 .buttons .add-to-cart {
   padding: 10px 20px;
-  border: 1px solid #f02d34;
+  border: 1px solid #dabfc0;
   margin-top: 40px;
   font-size: 18px;
   font-weight: 500;
   background-color: white;
-  color: #f02d34;
+  color: #ee1c23;
   cursor: pointer;
   width: 200px;
   transition: all 0.3s ease;
 }
 
 .buttons .add-to-cart:hover {
-  background-color: rgb(244, 244, 244);
+  border: 1px solid #f02d34;
 }
 
 .buttons .buy-now {
