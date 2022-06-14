@@ -26,9 +26,6 @@ const Cart = () => {
   } = useContext(AppContext);
 
   useEffect(() => {
-    /**
-     * Alert if clicked on outside of element
-     */
     function handleClickOutside(event: MouseEvent) {
       if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
         setShowCart(false);
