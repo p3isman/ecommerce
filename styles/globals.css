@@ -259,6 +259,11 @@ span.text-red {
   font-weight: 500;
   color: red;
   cursor: pointer;
+  transition: all .3s ease;
+}
+
+.banner-desc button:hover {
+  background-color: gainsboro;
 }
 
 .banner-desc .left {
