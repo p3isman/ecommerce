@@ -82,7 +82,6 @@ span.text-red {
 
 .cart-icon {
   position: relative;
-  cursor: pointer;
   transition: transform 0.4s ease;
   border: none;
   background-color: transparent;
@@ -371,10 +370,6 @@ span.text-red {
   font-size: 20px;
 }
 
-.cancel {
-  cursor: pointer;
-}
-
 .product-container {
   overflow: auto;
   margin-top: 15px;
@@ -478,7 +473,6 @@ span.text-red {
   background-color: #ebebeb;
   width: 400px;
   height: 400px;
-  cursor: pointer;
 }
 
 .product-detail-image:hover {
@@ -496,7 +490,6 @@ span.text-red {
   width: 70px;
   height: 70px;
   background-color: #ebebeb;
-  cursor: pointer;
 }
 
 .selected-image {
@@ -611,11 +604,11 @@ span.text-red {
 .quantity-desc span {
   padding: 6px 12px;
   font-size: 16px;
-  cursor: pointer;
 }
 
 .quantity-desc .minus {
   color: #f02d34;
+  cursor: pointer;
 }
 
 .quantity-desc .num {
@@ -628,6 +621,7 @@ span.text-red {
 
 .quantity-desc .plus {
   color: rgb(49, 168, 49);
+  cursor: pointer;
 }
 
 .maylike-products-wrapper {
