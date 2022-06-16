@@ -1,4 +1,10 @@
-import { createContext, Dispatch, SetStateAction, useState } from 'react';
+import {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useState
+} from 'react';
 import toast from 'react-hot-toast';
 import { IProduct } from '../types';
 
@@ -32,6 +38,15 @@ const StateContext = ({ children }: Props) => {
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const [totalItemsAmount, setTotalItemsAmount] = useState<number>(0);
 
+  // Load localStorage items
+  useEffect(() => {
+    setCartItems(JSON.parse(localStorage.getItem('cartItems') ?? '[]'));
+    setTotalPrice(JSON.parse(localStorage.getItem('totalPrice') ?? '0'));
+    setTotalItemsAmount(
+      JSON.parse(localStorage.getItem('totalItemsAmount') ?? '0')
+    );
+  }, []);
+
   const changeItemQuantity = (id: string, action: 'inc' | 'dec') => {
     const product = cartItems.find(item => item._id === id);
     const productIndex = cartItems.findIndex(item => item._id === id);
@@ -48,6 +63,14 @@ const StateContext = ({ children }: Props) => {
       setCartItems(newCartItems);
       setTotalPrice(prevTotalPrice => prevTotalPrice + product.price!);
       setTotalItemsAmount(prevTotalItemsAmount => prevTotalItemsAmount + 1);
+      localStorage.setItem(
+        'totalPrice',
+        JSON.stringify(totalPrice + product.price!)
+      );
+      localStorage.setItem(
+        'totalItemsAmount',
+        JSON.stringify(totalItemsAmount + 1)
+      );
     } else if (action === 'dec') {
       if (product.quantity > 1) {
         newCartItems.splice(productIndex, 0, {
@@ -57,14 +80,32 @@ const StateContext = ({ children }: Props) => {
         setCartItems(newCartItems);
         setTotalPrice(prevTotalPrice => prevTotalPrice - product.price!);
         setTotalItemsAmount(prevTotalItemsAmount => prevTotalItemsAmount - 1);
+        localStorage.setItem(
+          'totalPrice',
+          JSON.stringify(totalPrice - product.price!)
+        );
+        localStorage.setItem(
+          'totalItemsAmount',
+          JSON.stringify(totalItemsAmount - 1)
+        );
       }
     }
+    localStorage.setItem('cartItems', JSON.stringify(newCartItems));
   };
 
   const onAdd = (product: IProduct, quantity: number) => {
     setTotalPrice(prevTotalPrice => prevTotalPrice + product.price! * quantity);
     setTotalItemsAmount(
       prevTotalItemsAmount => prevTotalItemsAmount + quantity
+    );
+
+    localStorage.setItem(
+      'totalPrice',
+      JSON.stringify(totalPrice + product.price! * quantity)
+    );
+    localStorage.setItem(
+      'totalItemsAmount',
+      JSON.stringify(totalItemsAmount + quantity)
     );
 
     const checkProductInCart = cartItems.find(item => item._id === product._id);
@@ -76,9 +117,14 @@ const StateContext = ({ children }: Props) => {
       });
 
       setCartItems(updatedCartItems);
+      localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
     } else {
       const newItem: CartProduct = { ...product, quantity };
       setCartItems(prevCartItems => [...prevCartItems, newItem]);
+      localStorage.setItem(
+        'cartItems',
+        JSON.stringify([...cartItems, newItem])
+      );
     }
 
     toast.success(`${quantity} ${product.name} added to the cart.`);
@@ -93,6 +139,16 @@ const StateContext = ({ children }: Props) => {
       prevTotalItemsAmount => prevTotalItemsAmount - product.quantity
     );
     setCartItems(newCartItems);
+
+    localStorage.setItem('cartItems', JSON.stringify(newCartItems));
+    localStorage.setItem(
+      'totalPrice',
+      JSON.stringify(totalPrice - product.price! * product.quantity)
+    );
+    localStorage.setItem(
+      'totalItemsAmount',
+      JSON.stringify(totalItemsAmount - product.quantity)
+    );
   };
 
   return (
